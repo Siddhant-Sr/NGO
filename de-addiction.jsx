@@ -1,0 +1,94 @@
+import React from "react";
+import './index.css';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+function Daddiction() {
+  
+  const [content, setContent] = useState([]);
+
+  useEffect(()=>{
+    fetchData();
+  }, []);
+  
+  const fetchData = async () =>{
+    const data = await fetch(
+      "http://localhost:1337/api/programs-articles?populate=*");
+    const json = await data.json();
+      console.log(json?.data[1]?.attributes?.article_img?.data?.attributes?.url);
+      setContent(json?.data);
+      console.log(content[1]?.attributes?.article_img?.data?.attributes?.url);
+  }
+    return (
+      <>
+      <>
+  <section className="project-details">
+    <div className="container">
+      <div className="row">
+        <div className="col-xl-6 col-lg-6">
+          <div className="project-details__left">
+            <div className="project-details__img">
+              <img
+            //  src="http://localhost:1337/uploads/thumbnail_de_addiction_ff5cacfb8d.jpg"
+                src={`http://localhost:1337`+ content[1]?.attributes?.article_img?.data?.attributes?.url}
+                className="mb-3"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+        <div className="col-xl-6 col-lg-6">
+          <div className="project-details__text-box">
+            <h4 className="mb-2">
+           { content[1]?.attributes?.heading_one}
+            </h4>
+            <p className="project-details__text-1">
+            { content[1]?.attributes?.content_one}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="project-details__bottom">
+        <div className="row">
+          <div className="col-xl-12">
+            <div className="project-details__text-box">
+              <h5 className="mb-2">
+              { content[1]?.attributes?.heading_two}
+              </h5>
+              <p>
+              { content[1]?.attributes?.content_two}
+              </p>
+              <h5 className="mb-2 mt-4">
+              { content[1]?.attributes?.heading_three}
+              </h5>
+              <p>
+              { content[1]?.attributes?.content_three}
+              </p>
+              <h5 className="mb-2 mt-4">
+              { content[1]?.attributes?.heading_four}
+              </h5>
+              <p>
+              { content[1]?.attributes?.content_four}
+              </p>
+              <h5 className="mb-2 mt-4">{ content[1]?.attributes?.heading_five} </h5>
+              <p>
+              { content[1]?.attributes?.content_five}
+              </p>
+              <h5 className="mb-2 mt-4">{ content[1]?.attributes?.heading_six} </h5>
+              <p>
+              { content[1]?.attributes?.content_six}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {/*Project Details End*/}
+</>
+
+      </>
+    );
+  }
+  
+  export default Daddiction;

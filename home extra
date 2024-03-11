@@ -1,0 +1,371 @@
+import React from "react";
+import './index.css';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+function f() {
+    return (
+      <>
+      
+      </>
+    );
+  }
+  
+  export default f;
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <section className="main-slider">
+    <div
+      className="swiper-container thm-swiper__slider"
+      data-swiper-options='{"slidesPerView": 1, "loop": true,
+          "effect": "fade",
+          "pagination": {
+              "el": "#main-slider-pagination",
+              "type": "bullets",
+              "clickable": true
+          },
+          "navigation": {
+              "nextEl": "#main-slider__swiper-button-next",
+              "prevEl": "#main-slider__swiper-button-prev"
+          },
+          "autoplay": {
+              "delay": 5000
+          }}'
+    >
+      <div className="swiper-wrapper">
+        {/*Start Swiper Slide Single*/}
+        <div className="swiper-slide">
+          <div
+            className="image-layer"
+            style={{
+              backgroundImage: "url(assets/images/backgrounds/slider-1.jpg)"
+            }}
+          />
+          <div className="main-slider-shape-1" />
+          <div className="main-slider-shape-2" />
+          <div className="main-slider-shape-3 zoominout" />
+          <div className="main-slider-shape-4 zoominout-2" />
+          <div className="main-slider-shape-5">
+            <img src="assets/images/shapes/main-slider-shape-5.png" alt="" />
+          </div>
+          <div className="container">
+            <div className="row">
+              <div className="col-xl-10">
+                <div className="main-slider__content">
+                  <h2>
+                    {" "}
+                    SUPPORT works with <span>Street Children</span>
+                  </h2>
+                  <h3>Who are Victims of Drug Abuse</h3>
+                  {/* <Link href="about.html" class="thm-btn main-slider__btn">Leran More</Link> */}
+                  {/* <div class="main-slider-arrow">
+                                      <img src="assets/images/shapes/main-slider-shape-1.png" class="float-bob-x"
+                                          alt="">
+                                  </div> */}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/*End Swiper Slide Single*/}
+        {/*Start Swiper Slide Single*/}
+        <div className="swiper-slide">
+          <div
+            className="image-layer"
+            style={{
+              backgroundImage: "url(assets/images/backgrounds/slider-2.jpg)"
+            }}
+          />
+          <div className="main-slider-shape-1" />
+          <div className="main-slider-shape-2" />
+          <div className="main-slider-shape-3 zoominout" />
+          <div className="main-slider-shape-4 zoominout-2" />
+          <div className="main-slider-shape-5">
+            <img src="assets/images/shapes/main-slider-shape-5.png" alt="" />
+          </div>
+          <div className="container">
+            <div className="row">
+              <div className="col-xl-10">
+                <div className="main-slider__content">
+                  <h2>
+                    We <span> Gift them</span>
+                  </h2>
+                  <h3> A Happy, Healthy and Drug-Free Childhood </h3>
+                  <Link
+                    href="donate-now.html"
+                    className="thm-btn main-slider__btn"
+                  >
+                    Donate Now{" "}
+                  </Link>
+                  <div className="main-slider-arrow">
+                    <img
+                      src="assets/images/shapes/main-slider-shape-1.png"
+                      className="float-bob-x"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/*End Swiper Slide Single*/}
+        {/*Start Swiper Slide Single*/}
+        <div className="swiper-slide">
+          <div
+            className="image-layer"
+            style={{
+              backgroundImage: "url(assets/images/backgrounds/slider-3.jpg)"
+            }}
+          />
+          <div className="main-slider-shape-1" />
+          <div className="main-slider-shape-2" />
+          <div className="main-slider-shape-3 zoominout" />
+          <div className="main-slider-shape-4 zoominout-2" />
+          <div className="main-slider-shape-5">
+            <img src="assets/images/shapes/main-slider-shape-5.png" alt="" />
+          </div>
+          <div className="container">
+            <div className="row">
+              <div className="col-xl-10">
+                <div className="main-slider__content">
+                  <h2>
+                    Help <span> them Get </span>
+                  </h2>
+                  <h3>Educated! </h3>
+                  <Link
+                    href="donate-now.html"
+                    className="thm-btn main-slider__btn"
+                  >
+                    Donate Now{" "}
+                  </Link>
+                  <div className="main-slider-arrow">
+                    <img
+                      src="assets/images/shapes/main-slider-shape-1.png"
+                      className="float-bob-x"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/*End Swiper Slide Single*/}
+        {/*Start Swiper Slide Single*/}
+        <div className="swiper-slide">
+          <div
+            className="image-layer"
+            style={{
+              backgroundImage: "url(assets/images/backgrounds/slider-4.jpg)"
+            }}
+          />
+          <div className="main-slider-shape-1" />
+          <div className="main-slider-shape-2" />
+          <div className="main-slider-shape-3 zoominout" />
+          <div className="main-slider-shape-4 zoominout-2" />
+          <div className="main-slider-shape-5">
+            <img src="assets/images/shapes/main-slider-shape-5.png" alt="" />
+          </div>
+          <div className="container">
+            <div className="row">
+              <div className="col-xl-10">
+                <div className="main-slider__content">
+                  <h2>
+                    Secular &amp; <span>Voluntary Struggle </span>{" "}
+                  </h2>
+                  <h3>to Save Street Children from Drug Abuse </h3>
+                  {/* <Link href="about.html" class="thm-btn main-slider__btn">Leran More</Link> */}
+                  {/* <div class="main-slider-arrow">
+                                      <img src="assets/images/shapes/main-slider-shape-1.png" class="float-bob-x"
+                                          alt="">
+                                  </div> */}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/*End Swiper Slide Single*/}
+        {/*Start Swiper Slide Single*/}
+        <div className="swiper-slide">
+          <div
+            className="image-layer"
+            style={{
+              backgroundImage: "url(assets/images/backgrounds/slider-5.jpg)"
+            }}
+          />
+          <div className="main-slider-shape-1" />
+          <div className="main-slider-shape-2" />
+          <div className="main-slider-shape-3 zoominout" />
+          <div className="main-slider-shape-4 zoominout-2" />
+          <div className="main-slider-shape-5">
+            <img src="assets/images/shapes/main-slider-shape-5.png" alt="" />
+          </div>
+          <div className="container">
+            <div className="row">
+              <div className="col-xl-10">
+                <div className="main-slider__content">
+                  <h2>
+                    {" "}
+                    Help us <span> feed them…</span>{" "}
+                  </h2>
+                  <h3>Donate towards ANSH Community Kitchen!</h3>
+                  <Link
+                    href="donate-now.html"
+                    className="thm-btn main-slider__btn"
+                  >
+                    Donate Now{" "}
+                  </Link>
+                  <div className="main-slider-arrow">
+                    <img
+                      src="assets/images/shapes/main-slider-shape-1.png"
+                      className="float-bob-x"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/*End Swiper Slide Single*/}
+        {/*Start Swiper Slide Single*/}
+        <div className="swiper-slide">
+          <div
+            className="image-layer"
+            style={{
+              backgroundImage: "url(assets/images/backgrounds/slider-6.jpg)"
+            }}
+          />
+          <div className="main-slider-shape-1" />
+          <div className="main-slider-shape-2" />
+          <div className="main-slider-shape-3 zoominout" />
+          <div className="main-slider-shape-4 zoominout-2" />
+          <div className="main-slider-shape-5">
+            <img src="assets/images/shapes/main-slider-shape-5.png" alt="" />
+          </div>
+          <div className="container">
+            <div className="row">
+              <div className="col-xl-10">
+                <div className="main-slider__content">
+                  <h2>
+                    {" "}
+                    Together <span> Let us Change </span>
+                  </h2>
+                  <h3>their Childhood! </h3>
+                  <Link
+                    href="donate-now.html"
+                    className="thm-btn main-slider__btn"
+                  >
+                    Donate Now{" "}
+                  </Link>
+                  <div className="main-slider-arrow">
+                    <img
+                      src="assets/images/shapes/main-slider-shape-1.png"
+                      className="float-bob-x"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/*End Swiper Slide Single*/}
+        {/*Start Swiper Slide Single*/}
+        <div className="swiper-slide">
+          <div
+            className="image-layer"
+            style={{
+              backgroundImage: "url(assets/images/backgrounds/slider-7.jpg)"
+            }}
+          />
+          <div className="main-slider-shape-1" />
+          <div className="main-slider-shape-2" />
+          <div className="main-slider-shape-3 zoominout" />
+          <div className="main-slider-shape-4 zoominout-2" />
+          <div className="main-slider-shape-5">
+            <img src="assets/images/shapes/main-slider-shape-5.png" alt="" />
+          </div>
+          <div className="container">
+            <div className="row">
+              <div className="col-xl-10">
+                <div className="main-slider__content">
+                  <h2>
+                    {" "}
+                    SUPPORT’s <span> Journey is </span>{" "}
+                  </h2>
+                  <h3>Empowered by Donors like You!</h3>
+                  {/* <Link href="about.html" class="thm-btn main-slider__btn">Leran More</Link> */}
+                  {/* <div class="main-slider-arrow">
+                                      <img src="assets/images/shapes/main-slider-shape-1.png" class="float-bob-x"
+                                          alt="">
+                                  </div> */}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/*End Swiper Slide Single*/}
+        {/*Start Swiper Slide Single*/}
+        <div className="swiper-slide">
+          <div
+            className="image-layer"
+            style={{
+              backgroundImage: "url(assets/images/backgrounds/slider-8.jpg)"
+            }}
+          />
+          <div className="main-slider-shape-1" />
+          <div className="main-slider-shape-2" />
+          <div className="main-slider-shape-3 zoominout" />
+          <div className="main-slider-shape-4 zoominout-2" />
+          <div className="main-slider-shape-5">
+            <img src="assets/images/shapes/main-slider-shape-5.png" alt="" />
+          </div>
+          <div className="container">
+            <div className="row">
+              <div className="col-xl-10">
+                <div className="main-slider__content">
+                  <h2>
+                    {" "}
+                    Come <span> be part of </span>{" "}
+                  </h2>
+                  <h3>our Transformation Journey</h3>
+                  {/* <Link href="about.html" class="thm-btn main-slider__btn">Leran More</Link> */}
+                  {/* <div class="main-slider-arrow">
+                                      <img src="assets/images/shapes/main-slider-shape-1.png" class="float-bob-x"
+                                          alt="">
+                                  </div> */}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/*End Swiper Slide Single*/}
+      </div>
+      <div className="swiper-pagination" id="main-slider-pagination" />
+      <div className="main-slider__nav">
+        <div
+          className="swiper-button-prev"
+          id="main-slider__swiper-button-next"
+        >
+          <i className="fa fa-long-arrow-alt-right" />
+        </div>
+        <div
+          className="swiper-button-next"
+          id="main-slider__swiper-button-prev"
+        >
+          <i className="fa fa-long-arrow-alt-left" />
+        </div>
+      </div>
+    </div>
+  </section>
+  {/*Main Slider End*/}
