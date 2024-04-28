@@ -2,8 +2,30 @@
 import React from "react";
 import './index.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { HOST, HOST_API } from "./utilities";
 
 function Partner() {
+  const [content, setContent] = useState([]);
+  
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(HOST_API+"/partner-with-us?populate=*");
+      const json = await response.json();
+      setContent(json.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+
+  useEffect(() => {
+    console.log(content[0]);
+  }, [content]);
+
       return (
         <>
   {/*Page Header Start*/}

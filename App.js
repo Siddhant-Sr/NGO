@@ -10,7 +10,7 @@ import Compliances from './compliances';
 import Daddiction from './de-addiction';
 import Donate from './donate';
 import Overview from './donation-overview';
-import drug from './drug-prev';
+import Drug from './drug-prev';
 import Education from './education';
 import Facilities from './facilities';
 import Gallery from './gallery';
@@ -22,6 +22,7 @@ import Stories from './success-stories';
 import skill from './skill-training';
 import Team from './team';
 import Trustees from './Trustees';
+import ProgramsComp from './ProgramsComp';
 
 import { BrowserRouter as Router, Route,Routes } from "react-router-dom";
 import './App.css';
@@ -36,16 +37,18 @@ function App() {
       <Router>
         <Header />
         <Routes>
-         
-          <Route path="/home-page" element={<Home/>}></Route>
+        <Route path="/program/:id" element={<ProgramsComp />} />
+
+          <Route path="/" element={<Home/>}></Route>
           <Route path="/ambulance-services" element={<Ambulance/>}></Route>
           <Route path="/ansh-community-kitchen" element={<Ansh/>}></Route>
           <Route path="/annual-reports" element={<AReport/>}></Route>
           <Route path="/compliances" element={<Compliances/>}></Route>
           <Route path="/de-addiction" element={<Daddiction/>}></Route>
+          {/* <Route path="/de-addiction" element={<Daddiction/>}></Route> */}
           <Route path="/donate" element={<Donate/>}></Route>
           <Route path="/donation-overview" element={<Overview/>}></Route>
-          <Route path="/drug-prevention" element={<drug/>}></Route>     
+          <Route path="/drug-prevention-and-awareness" element={<Drug/>}></Route>     
           <Route path="/education" element={<Education/>}></Route>   
           <Route path="/facilities" element={<Facilities/>}></Route>   
           <Route path="/gallery" element={<Gallery/>}></Route>   

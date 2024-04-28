@@ -1,8 +1,27 @@
 import React from "react";
 import './index.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { HOST, HOST_API } from "./utilities";
 
 function Trustees() {
+
+  const [content, setContent] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(HOST_API + "/trustees?populate=*");
+      const json = await response.json();
+      setContent(json.data);
+      console.log(json.data[0].attributes.image.data.attributes.url)
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
     return (
       <>
       <>
@@ -30,7 +49,7 @@ function Trustees() {
             <div className="team-list-col-1 wow fadeInUp">
               <div className="team-list-img">
                 <img
-                  src="assets/images/team/Pradeep-Agarwal.jpg"
+                  src={`${HOST}`+ content[0]?.attributes?.image.data.attributes.url}
                   className="wow fadeInRight" alt="" 
                 />
               </div>
@@ -82,7 +101,7 @@ function Trustees() {
             <div className="team-list-col-1 wow fadeInUp">
               <div className="team-list-img">
                 <img
-                  src="assets/images/team/Sapna-Agarwal.jpg"
+                   src={`${HOST}`+ content[1]?.attributes?.image.data.attributes.url}
                   className="wow fadeInRight" alt="" 
                 />
               </div>
@@ -103,7 +122,7 @@ function Trustees() {
             <div className="team-list-col-1 wow fadeInUp">
               <div className="team-list-img">
                 <img
-                  src="assets/images/team/Prerna-Sharma.jpg"
+                   src={`${HOST}`+ content[2]?.attributes?.image.data.attributes.url}
                   className="wow fadeInRight" alt="" 
                 />
               </div>
@@ -126,7 +145,7 @@ function Trustees() {
             <div className="team-list-col-1 wow fadeInUp">
               <div className="team-list-img">
                 <img
-                  src="assets/images/team/Kalindi-Mazumdar.jpg"
+                    src={`${HOST}`+ content[3]?.attributes?.image.data.attributes.url}
                   className="wow fadeInRight" alt="" 
                 />
               </div>

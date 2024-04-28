@@ -53,7 +53,7 @@ function Header() {
               <div className="main-menu-wrapper clearfix">
                 <div className="main-menu-wrapper__left">
                   <div className="main-menu-wrapper__logo">
-                    <Link className="link" to="/home-page">
+                    <Link className="link" to="/">
                     <img src="https://www.supportstreetchildren.org/assets/images/resources/logo-1.png" alt="" />
                     </Link>
                   </div>
@@ -65,7 +65,7 @@ function Header() {
                     {/* </Link> */}
                     <ul className="main-menu__list">
                       <li className="dropdown current">
-                      <Link className="link" to="/home-page">Home</Link>
+                      <Link className="link" to="/">Home</Link>
                       </li>
                       <li className="dropdown">
                       <Link className="link" to="/about-us">

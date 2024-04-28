@@ -1,5 +1,8 @@
 import React from "react";
 import './index.css';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { HOST, HOST_API } from "./utilities";
 
 function About() {
     return (
@@ -43,7 +46,7 @@ function About() {
                 data-wow-duration="2500ms"
               >
                 <img
-                  src="assets/images/resources/about-one-small-img.jpg"
+                  src="frontend/website-supp/src/images/resources/about-one-small-img.jpg"
                   alt=""
                 />
               </div>

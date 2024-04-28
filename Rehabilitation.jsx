@@ -1,11 +1,31 @@
 import React from "react";
 import './index.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { HOST, HOST_API } from "./utilities";
 
 function Rehabilitation() {
+
+  const [content, setContent] = useState([]);
+
+ 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`${HOST_API}/programs-articles?populate=*`);
+      const json = await response.json();
+      setContent(json?.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+
+
     return (
-      <>
-      <>
+     
   <section className="project-details">
     <div className="container">
       <div className="row">
@@ -13,7 +33,7 @@ function Rehabilitation() {
           <div className="project-details__left">
             <div className="project-details__img">
               <img
-                src="assets/images/programs/rehabilitation.jpg"
+                src={`${HOST}`+ content[2]?.attributes?.article_img?.data?.attributes?.url}
                 className="mb-3" alt=""
               />
             </div>
@@ -22,18 +42,11 @@ function Rehabilitation() {
         <div className="col-xl-6 col-lg-6">
           <div className="project-details__text-box">
             <h4 className="mb-2">
-              Building Bridges to a New Life: Rehabilitating Street Youth
-              through Comprehensive Life Transformation
+            {content[2]?.attributes?.heading_one}
+              {console.log(content[2]?.attributes?.heading_two)}
             </h4>
             <p className="project-details__text-1">
-              The journey from addiction on the streets to rehabilitation is a
-              profound transformation for individuals seeking a path to
-              recovery. Our rehabilitation program goes beyond detox, focusing
-              on behavioral change to inspire street addicts to leave behind
-              their tumultuous past and reintegrate into mainstream society.
-              Through self-reflection, life skill education, one-to-one
-              sessions, and recreational activities, we empower them to reshape
-              their attitudes, habits, and lifestyles.
+              T{content[2]?.attributes?.content_one}
             </p>
           </div>
         </div>
@@ -43,52 +56,29 @@ function Rehabilitation() {
           <div className="col-xl-12">
             <div className="project-details__text-box">
               <h5 className="mb-2">
-                Section 1: Life Transformation through Self-Reflection
+             {content[2]?.attributes?.heading_two}
               </h5>
               <p>
-                Rehabilitation is not just about breaking the chains of
-                addiction; it's a process of self-discovery and reflection. Our
-                program guides addicts in reshaping their behavior, attitudes,
-                habits, and thought processes. By fostering self-awareness, we
-                pave the way for a profound and lasting transformation,
-                preparing them for a brighter future.
+              {content[2]?.attributes?.content_two}
               </p>
               <h5 className="mb-2 mt-4">
-                Section 2: Life Skill Education (LSE) and Soft Skills{" "}
+              {content[2]?.attributes?.heading_three}
               </h5>
               <p>
-                {" "}
-                Life Skill Education is the cornerstone of our rehabilitation
-                program. Through group sessions, we impart essential skills such
-                as physical grooming, interpersonal communication,
-                self-awareness, decision-making, and coping with stress and
-                emotions. These skills are vital for navigating the challenges
-                of a drug-free life and smoothly integrating into the social
-                fabric.
+                
+              {content[2]?.attributes?.content_three}
               </p>
-              <h5 className="mb-2 mt-4">Section 3: One-to-One Sessions</h5>
+              <h5 className="mb-2 mt-4"> {content[2]?.attributes?.heading_four}</h5>
               <p>
-                Acknowledging the multifaceted dimensions of drug addiction, our
-                program offers personalized, one-to-one sessions. Recognizing
-                the physical, psychological, and socio-cultural aspects, these
-                sessions provide tailored support to help individuals break free
-                from the grip of addiction. In this collaborative journey, our
-                team becomes a source of strength for those who seek to overcome
-                the challenges of rehabilitation.
+              {content[2]?.attributes?.content_four}
               </p>
               <h5 className="mb-2 mt-4">
-                Section 4: Recreation for Comprehensive Development
+              {content[2]?.attributes?.heading_five}
               </h5>
               <p>
-                Recreation is not just a pastime; it's a crucial component for
-                holistic development. Many street youth and addicts associate
-                recreation with drug use. Our rehabilitation center encourages
-                them to engage in indoor and outdoor activities, fostering
-                values like leadership, sharing, teamwork, and emotional
-                expression. These sessions prepare them for formal education and
-                instill stability for a healthier future.
+              {content[2]?.attributes?.content_five}
               </p>
-              <h5 className="mb-2 mt-4">Activities</h5>
+              <h5 className="mb-2 mt-4"> {content[2]?.attributes?.heading_six}</h5>
               <p>
                 Outdoor Activities:
                 <br />
@@ -124,11 +114,80 @@ function Rehabilitation() {
       </div>
     </div>
   </section>
-  {/*Project Details End*/}
-</>
 
-      </>
     );
   }
   
   export default Rehabilitation;
+
+// import React, { useEffect, useState } from "react";
+// import './index.css';
+// import { HOST, HOST_API } from "./utilities";
+
+// function Rehabilitation() {
+//   const [content, setContent] = useState([]);
+
+//   useEffect(() => {
+//     fetchData();
+//   }, []);
+
+//   const fetchData = async () => {
+//     try {
+//       const response = await fetch(`${HOST_API}/programs-articles?populate=*`);
+//       const json = await response.json();
+//       setContent(json?.data);
+//     } catch (error) {
+//       console.error("Error fetching data:", error);
+//     }
+//   }
+
+//   return (
+//     <>
+//       <section className="project-details">
+//         <div className="container">
+//           <div className="row">
+//             <div className="col-xl-6 col-lg-6">
+//               <div className="project-details__left">
+//                 <div className="project-details__img">
+//                   <img
+//                     src={`${HOST}${content[2]?.attributes?.article_img?.data?.attributes?.url}`}
+//                     className="mb-3" alt=""
+//                   />
+//                 </div>
+//               </div>
+//             </div>
+//             <div className="col-xl-6 col-lg-6">
+//               <div className="project-details__text-box">
+//                 <h4 className="mb-2">
+//                   Building Bridges to a New Life: Rehabilitating Street Youth
+//                   through Comprehensive Life Transformation
+//                 </h4>
+//                 <p className="project-details__text-1">
+//                   The journey from addiction on the streets to rehabilitation is a
+//                   profound transformation for individuals seeking a path to
+//                   recovery. Our rehabilitation program goes beyond detox, focusing
+//                   on behavioral change to inspire street addicts to leave behind
+//                   their tumultuous past and reintegrate into mainstream society.
+//                   Through self-reflection, life skill education, one-to-one
+//                   sessions, and recreational activities, we empower them to reshape
+//                   their attitudes, habits, and lifestyles.
+//                 </p>
+//               </div>
+//             </div>
+//           </div>
+//           <div className="project-details__bottom">
+//             <div className="row">
+//               <div className="col-xl-12">
+//                 <div className="project-details__text-box">
+//                   {/* Your sections here */}
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </section>
+//     </>
+//   );
+// }
+
+// export default Rehabilitation;

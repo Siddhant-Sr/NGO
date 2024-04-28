@@ -1,8 +1,32 @@
-import React from "react";
+
 import './index.css';
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { HOST, HOST_API } from "./utilities";
 
 function Stories() {
+
+  const [content, setContent] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(HOST_API+ "/success-stories?populate=*");
+      const json = await response.json();
+      setContent(json.data);
+      console.log(content);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+
+  useEffect(() => {
+    console.log(content);
+  }, [content]);
+
     return (
       <>
       <>
@@ -32,55 +56,27 @@ function Stories() {
         <div className="col-xl-12">
           <section className="stories-list">
             <div className="stories-list-col-3">
-              <h4> Tappan Raj </h4>
+              <h4> {content[0]?.attributes?.Name} </h4>
             </div>
             <div className="stories-list-col-1 wow fadeInUp">
               <div className="stories-list-img">
                 <img
-                  src="assets/images/success-stories/Tappan-Raj.jpg"
+                  src={ `${HOST}`+content[0]?.attributes?.photo?.data?.attributes?.url}
                   className="wow fadeInRight" alt=""
                 />
               </div>
             </div>
             <div className="stories-list-col-2">
               <p>
-                Tappan is the younger of the two children, always smiling and
-                jovial although he misses his family. He doesn’t remember from
-                where he originally belongs. He was playing with his friends in
-                a train which was stationary at the platform and he hid himself
-                under the seat and fell asleep and later on the train moved on
-                and he landed in Mumbai. At that time he was only 6 years old
-                and had felt lost being alone in a strange city. Slowly he made
-                friends and stayed with them. He would beg on the
-                streets/traffic junctions, sweeping/begging in local trains and
-                ate frugal meals. He was introduced to smoking cigarettes by his
-                friends. It was lucky that SUPPORT’ outreach staff found him
-                before his friends got him into other abusive substances. While
-                on the street, he would visit SUPPORT’ Day Care center and was
-                convinced to opt for detox/rehab program to which he had agreed.
+                {content[0]?.attributes?.story_para_one}
                 <br />
                 <br />
-                This was a turning point in his life. On completion of detox
-                program, his rehab began. He was admitted to a government run
-                school. The rehabilitation program at SUPPORT focused on
-                bringing about a transformation in his behavior, attitudes and
-                habits preparing him for the mainstream. Apart from which there
-                are several activities essential for a developing child, like
-                recreation, drawing, handicrafts etc. At SUPPORT he was also
-                tutored by our in-house coaching class teachers. The regular
-                coaching classes enabling him to cope with the day-to-day
-                homework and lessons in school. He found the classes helpful and
-                was able to cope well with his studies in school. This resulted
-                in him completing his 10th standard school final examinations
-                and had scored 82% which was commendable feat.
+                 {content[0]?.attributes?.story_para_two}
               </p>
             </div>
             <div className="stories-list-col-3 mt-3">
               <p>
-                After 10th under organisation, he was completed ITESM
-                (Information Technology Electronic System Maintenance) two years
-                course under Government Industrial Training Institution with
-                76.28%. <br />
+                 {content[0]?.attributes?.story_para_three} <br />
                 <br />
                 <strong>
                   Educational Qualification journey of Mr. Tappan as follows;
@@ -133,163 +129,80 @@ function Stories() {
                 </table>
               </div>
               <p>
-                Tappan applied for a job with HCL in Pune after finishing his
-                B.E., and he was hired following an interview. He earns
-                Rs.40,000 every month. This is the successful beginning for
-                Tappan to become a part of the mainstream social milieu. This is
-                the best example of role model for all of us.{" "}
+                 {content[0]?.attributes?.story_para_four}
               </p>
             </div>
           </section>
           <section className="stories-list">
             <div className="stories-list-col-3">
-              <h4>Ravi Pile</h4>
+              <h4>{content[1]?.attributes?.Name}</h4>
             </div>
             <div className="stories-list-col-1 wow fadeInUp">
               <div className="stories-list-img">
                 <img
-                  src="assets/images/success-stories/Ravi-Pile.jpg"
+                  src={ `${HOST}`+content[1]?.attributes?.photo?.data?.attributes?.url}
                   className="wow fadeInRight" alt=""
                 />
               </div>
             </div>
             <div className="stories-list-col-2">
               <p>
-                A child who was addicted to drugs at the age of five, a child
-                who used to live on streets and who lost his family. Not even
-                able to remember his name, his family and place. This is the
-                background of Ravi Pile, who is part of support today. This is
-                the life story of Ravi. Ravi is working as a guide of vocational
-                centre since three years. Dance is passion for him, he has
-                completed professional dance classes.
+                 {content[1]?.attributes?.story_para_one}
                 <br />
                 <br />
-                Ravi still remembers the day when he came in support through an
-                outreach worker.He was happy to join support. But very soon he
-                started showing the resistance because in support there are
-                rules which are followed by each person in support. Ravi shared
-                that the street life taught him freedom in a very different way.
-                After coming in support, he learnt to respect others's freedom.
-                It was so difficult phase of detoxification in support. Ravi was
-                angry...he planned to run out.
+                {content[1]?.attributes?.story_para_two}
                 <br />
                 <br />
-                As Ravi shared, “I had many negative feelings against my peers.
-                I was a child back then. I used to think these support peers are
-                bothering me, they are ruling over me.” Ravi used to argue with
-                peers and staff about rules and instructions. He says, “although
-                I was a child, I liked to argue. That's what street life taught
-                me. But in support when peer members gave me care, love and
-                respect I turned to do the same.”
+               {content[1]?.attributes?.story_para_three}
               </p>
             </div>
             <div className="stories-list-col-3 mt-3">
               <p>
-                “Outside world reality gave me a true understanding of what life
-                is. When I walked out of support after completing vocational
-                centre course, I was earning and I was paying for every little
-                thing in life for a first time. That situation gave me
-                realization of what support had done for me!! I used to regret
-                when I recalled how I behaved with my peers. Earning gave me
-                sense of dignity, it was my own efforts.” <br />
+                {content[1]?.attributes?.story_para_four} <br />
                 <br />
-                “Today I realized that sense of dignity came because of support.
-                In rehabilitation centre support staff used to take session with
-                us. Those sessions have given me life lessons. My anger and
-                hopelessness life came in direction. I had passion of dancing; I
-                channelized my all energy to dancing. This helped me to keep
-                away myself from addiction.” <br />
-                <br />
-                “This is why I got more attached to support. Support is like a
-                tree for me, it has given peace, support, care, love without
-                expecting anything from us. However, I choose to work in
-                support. In initial phase I worked in support in kitchen centre
-                of support. Vocational centre taught me the discipline of work,
-                communication skills and behaviour.” <br />
-                <br />
-                In Ravi’s words, “I am working with support organization since
-                the last 4 years as an electrician trainer at vocational
-                training centre and my salary is Rs. 16940. I am thankful for
-                support and each and every person in support”. When Ravi was
-                asked that, do he and his wife feel alone? As they don’t have
-                blood relative... but very proudly Ravi said we don't need
-                anyone. Support is our family, it’s always there for us and we
-                are there for support.”
+                {content[1]?.attributes?.story_para_five}
               </p>
             </div>
           </section>
           <section className="stories-list">
             <div className="stories-list-col-3">
-              <h4>Ramu Teja Thapa </h4>
+              <h4>{content[2]?.attributes?.Name} </h4>
             </div>
             <div className="stories-list-col-1 wow fadeInUp">
               <div className="stories-list-img">
                 <img
-                  src="assets/images/success-stories/Ramu-Teja.jpg"
+                  src={ `${HOST}`+content[2]?.attributes?.photo?.data?.attributes?.url}
                   className="wow fadeInRight" alt=""
                 />
               </div>
             </div>
             <div className="stories-list-col-2">
               <p>
-                A Nepali, Ramu Teja Thapa is a 24 age-old who has been working
-                as a staff member in Saphala center of Support since 2001.{" "}
+                {content[2]?.attributes?.story_para_one}
                 <br />
                 <br />
-                Like any other child, he had been enrolled in a school.
-                Pretending to go to school, he actually used to roam with his
-                friends. Looking at his friends, he started drinking and
-                smoking. But at the same time, he started to steal. His father
-                took a decision to send him to his uncle’s home. But there also
-                he did the same thing. All his family members started hating and
-                beating him. He left home with depression and came to Delhi.{" "}
+               {content[2]?.attributes?.story_para_two} <br />
                 <br />
-                <br />
-                In Delhi he began stealing again. After three-four months he
-                lived in one organization but within three months he too ran
-                away from that organisation. Again, he started living on
-                streets. <br />
-                <br />
-                Then he came to Mumbai by train. He was living at Dadar station.
-                At Dadar station, one support sister met him. She brought him to
-                support. Generally detox process takes twenty one days, but
-                Ramu's detox completed in six months. After detox they sent him
-                to the rehab centre. “I studied in 7th class. After that,
-                support found a job for me.” Before the job he fled from support
-                but within one day he returned.
+                {content[2]?.attributes?.story_para_three}
               </p>
             </div>
             <div className="stories-list-col-3 mt-3">
               <p>
-                He said,”support was not the only an organization, it is a home
-                for street children.” He said sir/madam always used to give him
-                a message that, “you are not on the street you are in support.”
-                “They always loved me”
+                {content[2]?.attributes?.story_para_four}
                 <br />
                 <br />
-                In 2013, he became a staff member in support as a night staff
-                and his per month salary is Rs.14520/-. Support sent him to
-                saphala center. He has now three to four lakh rupees saving in
-                the bank. He is planning to purchase one home.
-                <br />
-                <br />
-                He said ‘I can never forget what support did for me. Support
-                tolerates tantrums. If I was on street, I may not be alive.
-                Support gave me new life and stood another path. Today we can
-                understand the problem. I don’t know my father's and mother's
-                name but yes, my father’s and mother’s name is support. I very
-                proudly say that 'Support' is my father and mother.”
+                {content[2]?.attributes?.story_para_five}
               </p>
             </div>
           </section>
           <section className="stories-list">
             <div className="stories-list-col-3">
-              <h4>Manoj Tirki </h4>
+              <h4>{content[3]?.attributes?.Name} </h4>
             </div>
             <div className="stories-list-col-1 wow fadeInUp">
               <div className="stories-list-img">
                 <img
-                  src="assets/images/success-stories/Manoj-Tirki.jpg"
+                  src={ `${HOST}`+content[3]?.attributes?.photo?.data?.attributes?.url}
                   className="wow fadeInRight" alt=""
                 />
               </div>
@@ -332,12 +245,12 @@ function Stories() {
           </section>
           <section className="stories-list">
             <div className="stories-list-col-3">
-              <h4>Ajay Sahani </h4>
+              <h4>{content[4]?.attributes?.Name} </h4>
             </div>
             <div className="stories-list-col-1 wow fadeInUp">
               <div className="stories-list-img">
                 <img
-                  src="assets/images/success-stories/Ajay-Sahani.jpg"
+                  src={ `${HOST}`+content[4]?.attributes?.photo?.data?.attributes?.url}
                   className="wow fadeInRight" alt=""
                 />
               </div>
@@ -380,12 +293,12 @@ function Stories() {
           </section>
           <section className="stories-list">
             <div className="stories-list-col-3">
-              <h4>Kamlesh </h4>
+              <h4>{content[5]?.attributes?.Name} </h4>
             </div>
             <div className="stories-list-col-1 wow fadeInUp">
               <div className="stories-list-img">
                 <img
-                  src="assets/images/success-stories/Kamlesh.jpg"
+                  src={ `${HOST}`+content[5]?.attributes?.photo?.data?.attributes?.url}
                   className="wow fadeInRight" alt=""
                 />
               </div>

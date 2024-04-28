@@ -2,6 +2,8 @@ import React from "react";
 import './index.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import {HOST, HOST_API } from "./utilities";
+
 
 function Daddiction() {
   
@@ -13,11 +15,11 @@ function Daddiction() {
   
   const fetchData = async () =>{
     const data = await fetch(
-      "http://localhost:1337/api/programs-articles?populate=*");
+      HOST_API+"/programs-articles?populate=*");
     const json = await data.json();
       console.log(json?.data[1]?.attributes?.article_img?.data?.attributes?.url);
       setContent(json?.data);
-      console.log(content[1]?.attributes?.article_img?.data?.attributes?.url);
+      console.log(content);
   }
     return (
       <>
@@ -30,7 +32,7 @@ function Daddiction() {
             <div className="project-details__img">
               <img
             //  src="http://localhost:1337/uploads/thumbnail_de_addiction_ff5cacfb8d.jpg"
-                src={`http://localhost:1337`+ content[1]?.attributes?.article_img?.data?.attributes?.url}
+                src={`${HOST}`+ content[1]?.attributes?.article_img?.data?.attributes?.url}
                 className="mb-3"
                 alt=""
               />

@@ -2,24 +2,26 @@ import React from "react";
 import './index.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { HOST, HOST_API } from "./utilities";
+import Tile from "./Tile";
 
 function Home() {
 
-
   const [content, setContent] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     fetchData();
   }, []);
-  
-  const fetchData = async () =>{
-    const data = await fetch(
-      "http://localhost:1337/api/homepage-article-tiles?populate=*");
-    const json = await data.json();
-      console.log(json?.data[1]?.attributes?.article_img?.data?.attributes?.url);
-      setContent(json?.data);
-      console.log(content[1]?.attributes?.article_img?.data?.attributes?.url);
-  }
+
+  const fetchData = async () => {
+    try {
+      const data = await fetch("http://localhost:1337/api/programs?populate=*");
+      const json = await data.json();
+      setContent(json?.data || []); // Ensure setContent receives an array
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
       return (
 <>
@@ -59,161 +61,22 @@ function Home() {
         {/* <span class="section-title__tagline"></span> */}
         <h2 className="section-title__title">Our Programs</h2>
       </div>
+ 
+
+
       <div className="row">
-        <div className="col-xl-4 col-md-6 wow fadeInUp" data-wow-delay="300ms">
-          {/*Causes One Single*/}
-          <div className="causes-one__single">
-            <div className="causes-one__img">
-              <img src="https://www.supportstreetchildren.org/assets/images/resources/Drug-Prevention.jpg" alt="" />
-            </div>
-            <div className="causes-one__content-box">
-              <div className="causes-one__content">
-                <h3 className="causes-one__title">
-                  <Link href="drug-prevention-and-awareness.html">
-                    Drug Prevention &amp; Awareness{" "}
-                    <span>(Outreach Programme)</span>{" "}
-                  </Link>
-                </h3>
-                <div className="causes-one__btn-box">
-                  <Link
-                    href="drug-prevention-and-awareness.html"
-                    className="causes-one__read-more"
-                  >
-                    Read More <span className="icon-plus-sign" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-xl-4 col-md-6 wow fadeInUp" data-wow-delay="100ms">
-          {/*Causes One Single*/}
-          <div className="causes-one__single">
-            <div className="causes-one__img">
-              <img src="https://www.supportstreetchildren.org/assets/images/resources/De-addiction.jpg" alt="" />
-            </div>
-            <div className="causes-one__content-box">
-              <div className="causes-one__content">
-                <h3 className="causes-one__title">
-                  <Link href="de-addiction.html">
-                    {" "}
-                    De-addiction <span>(Detoxification) </span>{" "}
-                  </Link>
-                </h3>
-                <div className="causes-one__btn-box">
-                  <Link href="de-addiction.html" className="causes-one__read-more">
-                    Read More <span className="icon-plus-sign" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-xl-4 col-md-6 wow fadeInUp" data-wow-delay="200ms">
-          {/*Causes One Single*/}
-          <div className="causes-one__single">
-            <div className="causes-one__img">
-              <img src="https://www.supportstreetchildren.org/assets/images/resources/Rehabilitation.jpg" alt="" />
-            </div>
-            <div className="causes-one__content-box">
-              <div className="causes-one__content">
-                <h3 className="causes-one__title">
-                  <Link href="rehabilitation.html">
-                    {" "}
-                    Rehabilitation <span>(Shelter &amp; Recreation)</span>{" "}
-                  </Link>
-                </h3>
-                <div className="causes-one__btn-box">
-                  <Link
-                    href="rehabilitation.html"
-                    className="causes-one__read-more"
-                  >
-                    Read More <span className="icon-plus-sign" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-xl-4 col-md-6 wow fadeInUp" data-wow-delay="300ms">
-          {/*Causes One Single*/}
-          <div className="causes-one__single">
-            <div className="causes-one__img">
-              <img src="https://www.supportstreetchildren.org/assets/images/resources/Education.jpg" alt="" />
-            </div>
-            <div className="causes-one__content-box">
-              <div className="causes-one__content">
-                <h3 className="causes-one__title">
-                  <Link href="education.html">
-                    {" "}
-                    Education <span> </span>
-                  </Link>
-                </h3>
-                <div className="causes-one__btn-box">
-                  <Link href="education.html" className="causes-one__read-more">
-                    Read More <span className="icon-plus-sign" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-xl-4 col-md-6 wow fadeInUp" data-wow-delay="300ms">
-          {/*Causes One Single*/}
-          <div className="causes-one__single">
-            <div className="causes-one__img">
-              <img src="https://www.supportstreetchildren.org/assets/images/resources/Skill-Training.jpg" alt="" />
-            </div>
-            <div className="causes-one__content-box">
-              <div className="causes-one__content">
-                <h3 className="causes-one__title">
-                  <Link href="skill-training.html">
-                    {" "}
-                    Skill Training <span> </span>
-                  </Link>
-                </h3>
-                <div className="causes-one__btn-box">
-                  <Link
-                    href="skill-training.html"
-                    className="causes-one__read-more"
-                  >
-                    Read More <span className="icon-plus-sign" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-xl-4 col-md-6 wow fadeInUp" data-wow-delay="300ms">
-          {/*Causes One Single*/}
-          <div className="causes-one__single">
-            <div className="causes-one__img">
-              <img
-                src="https://www.supportstreetchildren.org/assets/images/resources/Ansh-Community-Kitchen.jpg"
-                alt=""
-              />
-            </div>
-            <div className="causes-one__content-box">
-              <div className="causes-one__content">
-                <h3 className="causes-one__title">
-                  <Link href="ansh-community-kitchen.html">
-                    {" "}
-                    ANSH Community Kitchen <span> </span>
-                  </Link>
-                </h3>
-                <div className="causes-one__btn-box">
-                  <Link
-                    href="ansh-community-kitchen.html"
-                    className="causes-one__read-more"
-                  >
-                    Read More <span className="icon-plus-sign" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {console.log(content)}
+      {content.map((item, index) => (
+
+        <Tile key={item.id} program={item} />// Assuming there is a link attribute in your data
+      
+      ))}
+    </div>
+    {/* <div className="row">
+      {content.map((item) => (
+        <Tile key={item.id} program={item} />
+      ))}
+    </div> */}
     </div>
   </section>
   <section className="team-one">
@@ -470,7 +333,7 @@ function Home() {
                           00
                         </h3>
                         <p className="counter-one__text">
-                          {" "}
+
                           committed staff including 15 former drug-users working
                           as care-taker
                         </p>
@@ -896,7 +759,7 @@ function Home() {
               <div className="project-one__content">
                 {/* <p class="project-one__sub-title">Mumbai</p> */}
                 <h3 className="project-one__title">
-                  <Link href="facilities.html#F1">Day Care Center</Link>
+                  <Link to="facilities.html#F1">Day Care Center</Link>
                 </h3>
               </div>
             </div>
@@ -914,7 +777,7 @@ function Home() {
               <div className="project-one__content">
                 {/* <p class="project-one__sub-title">Mumbai</p> */}
                 <h3 className="project-one__title">
-                  <Link href="facilities.html#F2">Detoxification Center</Link>
+                  <Link to="facilities.html#F2">Detoxification Center</Link>
                 </h3>
               </div>
             </div>
@@ -927,7 +790,7 @@ function Home() {
               <div className="project-one__content">
                 {/* <p class="project-one__sub-title">Mumbai</p> */}
                 <h3 className="project-one__title">
-                  <Link href="facilities.html#F3">Medical Facilities</Link>
+                  <Link to="facilities.html#F3">Medical Facilities</Link>
                 </h3>
               </div>
             </div>
@@ -945,7 +808,7 @@ function Home() {
               <div className="project-one__content">
                 {/* <p class="project-one__sub-title">Mumbai</p> */}
                 <h3 className="project-one__title">
-                  <Link href="facilities.html#F4">
+                  <Link to="facilities.html#F4">
                     Residential Rehabilitation Center
                   </Link>
                 </h3>
@@ -960,7 +823,7 @@ function Home() {
               <div className="project-one__content">
                 {/* <p class="project-one__sub-title">Mumbai</p> */}
                 <h3 className="project-one__title">
-                  <Link href="facilities.html#F5">Skill Development Centre</Link>
+                  <Link to="facilities.html#F5">Skill Development Centre</Link>
                 </h3>
               </div>
             </div>
